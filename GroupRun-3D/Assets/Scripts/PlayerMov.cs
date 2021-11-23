@@ -33,7 +33,7 @@ public class PlayerMov : MonoBehaviour
         if (lastMousePoint != null)
         {
             float difference = Input.mousePosition.x - lastMousePoint.Value;
-            float newPosx = transform.position.x + (difference * 10) * Time.deltaTime;
+            float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
             if (newPosx < (startX + floorWidth/2) && newPosx > (startX - floorWidth/2))
             {
                 transform.position = new Vector3(newPosx, transform.position.y, transform.position.z);
