@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMov : MonoBehaviour
 {
     public float speedX = 5.0f;
-    public float speedZ = 10.0f;
+    public float speedZ = 100.0f;
     private float? lastMousePoint;
     private float startX, floorWidth;
     public GameObject floor;
