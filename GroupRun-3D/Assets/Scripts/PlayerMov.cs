@@ -9,6 +9,7 @@ public class PlayerMov : MonoBehaviour
     private float? lastMousePoint;
     private float startX, floorWidth;
     public GameObject floor;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,8 @@ public class PlayerMov : MonoBehaviour
         lastMousePoint = null;
         startX = transform.position.x;
         floorWidth = floor.GetComponent<Renderer>().bounds.size.x - 8f;
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
     }
 
     // Update is called once per frame
@@ -36,12 +39,10 @@ public class PlayerMov : MonoBehaviour
             float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
             if (newPosx < (startX + floorWidth/2) && newPosx > (startX - floorWidth/2))
             {
-                transform.position = new Vector3(newPosx, transform.position.y, transform.position.z);
+                rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
             }
             lastMousePoint = Input.mousePosition.x;
         }
-
-        gameObject.transform.Translate(0.0f, 0.0f, speedZ * Time.deltaTime);
 
     }
 }
