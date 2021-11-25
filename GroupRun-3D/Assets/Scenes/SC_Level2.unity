@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -469,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336914261}
   m_LocalRotation: {x: 0.2256312, y: 0, z: 0, w: 0.9742128}
-  m_LocalPosition: {x: 0, y: 31.5, z: -87.3}
+  m_LocalPosition: {x: 0, y: 25.79, z: -75.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -670,6 +670,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1713116709, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
+      propertyPath: cloneObject
+      value: 
+      objectReference: {fileID: 1441684306}
     - target: {fileID: 1451441389180700833, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -714,14 +718,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1451441389180700834, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1451441389180700834, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1451441389180700836, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
       propertyPath: floor
       value: 
@@ -730,10 +726,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1451441389180700846, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
-      propertyPath: m_Size.x
-      value: 41.86
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
 --- !u!1 &1713116701 stripped
@@ -741,40 +733,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1451441389180700839, guid: 15c9c205d3274ef42ab82e8e53db50e6, type: 3}
   m_PrefabInstance: {fileID: 1713116700}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1713116702
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713116701}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3be08c3d2db905540a3360aeb5a15216, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1713116709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713116701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5068d62a858a165449fcabdbc9575996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOriginal: 1
-  cloneObject: {fileID: 1441684306}
-  regionSize: {x: 1, y: 1}
 --- !u!1 &1796924770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
