@@ -41,8 +41,11 @@ public class SawMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //blade rotation
         transform.Rotate(0.0f, 0.0f, rotationSpeed * Time.deltaTime);
 
+
+        //side movement control
         switch (currentMode)
         {
             case MoveMode.left:
