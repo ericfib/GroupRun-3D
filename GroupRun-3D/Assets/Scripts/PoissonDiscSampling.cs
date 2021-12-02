@@ -16,7 +16,7 @@ public static class PoissonDiscSampling
 		List<Vector2> spawnPoints = new List<Vector2>();
 
 		spawnPoints.Add(sampleRegionSize / 2);
-		while (spawnPoints.Count > 0 || points.Count < maxPoints)
+		while (spawnPoints.Count > 0 && points.Count < maxPoints)
 		{
 			int spawnIndex = Random.Range(0, spawnPoints.Count);
 			Vector2 spawnCentre = spawnPoints[spawnIndex];
