@@ -47,7 +47,6 @@ public class PlayerMov : MonoBehaviour
             }
             lastMousePoint = Input.mousePosition.x;
         }
-
     }
 
     private bool watchChildrenBorders(float difference)

@@ -36,7 +36,7 @@ public class multiply_player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("A");
-        if (other.gameObject.name.Contains("multiplier_barr") && isOriginal)
+        if (other.gameObject.name.Contains("multiplier_barr"))
         {
             string aux = other.gameObject.GetComponent<TMP_Text>().text;
             int nclones = System.Convert.ToInt32(aux);
@@ -44,7 +44,6 @@ public class multiply_player : MonoBehaviour
 
             if (nchildren + nclones < max)
             {
-                
                     for (int i = 0; i < nclones; i++)
                     {
                         Debug.Log("VOY A SPAWNEAR COSAS");
@@ -58,23 +57,25 @@ public class multiply_player : MonoBehaviour
     {
         bool tooClose, found;
         tooClose = found = false;
-       
+        int n_children = transform.childCount;
+
         while (found == false)
         {
-            
             var spawnPoint = new Vector2(Random.Range(-regionSize.x, regionSize.x), Random.Range(-regionSize.y, regionSize.y));
             Vector2 aux = new Vector2(spawnPoint.x + transform.position.x, spawnPoint.y + transform.position.z);
-            foreach (Vector2 point in points)
+           
+            for (int i = 0; i < n_children; i++)
             {
-                float distance = Vector2.Distance(point, aux);
+                Vector3 child_pos = transform.GetChild(i).transform.position;
+                Vector2 child_pos_xz = new Vector2(child_pos.x, child_pos.z);
+                float distance = Vector2.Distance(child_pos_xz, aux);
                 if (distance <= radius) tooClose = true;
             }
 
             if (!tooClose)
             {
-                var newObj = GameObject.Instantiate(cloneObject, new Vector3(aux.x, transform.position.y, aux.y), gameObject.transform.rotation);
+                var newObj = GameObject.Instantiate(cloneObject, new Vector3(aux.x, 0.0f, aux.y), gameObject.transform.rotation);
                 newObj.transform.parent = gameObject.transform;
-                points.Add(new Vector2(newObj.transform.position.x, newObj.transform.position.z));
                 found = true;
             }
         }
