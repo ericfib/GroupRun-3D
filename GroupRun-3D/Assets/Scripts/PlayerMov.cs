@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMov : MonoBehaviour
 {
     public float speedX = 5.0f;
-    public float speedZ = 10.0f;
+    public float speedZ = 100.0f;
     private float? lastMousePoint;
     private float startX, floorWidth;
     public GameObject floor;
@@ -36,8 +36,12 @@ public class PlayerMov : MonoBehaviour
         if (lastMousePoint != null)
         {
             float difference = Input.mousePosition.x - lastMousePoint.Value;
+
+            bool? fillTocaBorde = null;
+
+            fillTocaBorde = watchChildrenBorders(difference);
             float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
-            if (newPosx < (startX + floorWidth/2) && newPosx > (startX - floorWidth/2))
+            if (fillTocaBorde == false)
             {
                 rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
             }
@@ -45,4 +49,20 @@ public class PlayerMov : MonoBehaviour
         }
 
     }
+
+    private bool watchChildrenBorders(float difference)
+    {
+
+        int n_children = transform.childCount;
+        for (int i = 0; i < n_children; i++)
+        {
+            Vector3 child_pos = transform.GetChild(i).transform.position;
+            float newPosx = child_pos.x + (difference * speedX) * Time.deltaTime;
+            if (newPosx > (startX + floorWidth / 2) || newPosx < (startX - floorWidth / 2)) return true;
+        }
+
+        return false; 
+    }
+
 }
+

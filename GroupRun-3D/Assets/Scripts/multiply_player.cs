@@ -19,13 +19,11 @@ public class multiply_player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        points = new List<Vector2>();
-        points.Add(new Vector2(transform.position.x, transform.position.z));   
-        offset = gameObject.GetComponent<Collider>().bounds.size;
+        offset = transform.GetComponentInChildren<Collider>().bounds.size;
 
         radius = Mathf.Sqrt((offset.x * offset.x) + (offset.z * offset.z));
         cellSize = radius  / Mathf.Sqrt(2);
-        //grid = new int[Mathf.CeilToInt(regionSize.x / cellSize), Mathf.CeilToInt(regionSize.y / cellSize)];
+        
     }
 
     // Update is called once per frame
@@ -34,13 +32,10 @@ public class multiply_player : MonoBehaviour
        
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("A");
         if (other.gameObject.name.Contains("multiplier_barr") && isOriginal)
         {
             string aux = other.gameObject.GetComponent<TMP_Text>().text;
@@ -63,7 +58,7 @@ public class multiply_player : MonoBehaviour
     {
         bool tooClose, found;
         tooClose = found = false;
-        int cont = 0;
+       
         while (found == false)
         {
             
