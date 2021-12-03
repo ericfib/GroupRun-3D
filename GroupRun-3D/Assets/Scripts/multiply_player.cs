@@ -52,7 +52,7 @@ public class multiply_player : MonoBehaviour
             }
         }
     }
-
+    
     private void SpawnItem ()
     {
         bool tooClose, found;
@@ -69,7 +69,7 @@ public class multiply_player : MonoBehaviour
                 Vector3 child_pos = transform.GetChild(i).transform.position;
                 Vector2 child_pos_xz = new Vector2(child_pos.x, child_pos.z);
                 float distance = Vector2.Distance(child_pos_xz, aux);
-                if (distance <= radius) tooClose = true;
+                if (distance <= radius+0.5) tooClose = true;
             }
 
             if (!tooClose)
@@ -77,7 +77,11 @@ public class multiply_player : MonoBehaviour
                 var newObj = GameObject.Instantiate(cloneObject, new Vector3(aux.x, 0.0f, aux.y), gameObject.transform.rotation);
                 newObj.transform.parent = gameObject.transform;
                 found = true;
+            } else
+            {
+                return;
             }
         }
     }
+   
 }
