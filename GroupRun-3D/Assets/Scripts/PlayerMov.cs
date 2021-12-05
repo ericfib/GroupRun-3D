@@ -35,13 +35,14 @@ public class PlayerMov : MonoBehaviour
         }
         if (lastMousePoint != null)
         {
-            float difference = Input.mousePosition.x - lastMousePoint.Value;
+            float newMousePosition = Input.mousePosition.x;
+            float difference = newMousePosition - lastMousePoint.Value;
             float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
             if (newPosx < (startX + floorWidth/2) && newPosx > (startX - floorWidth/2))
             {
                 rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
             }
-            lastMousePoint = Input.mousePosition.x;
+            lastMousePoint = newMousePosition;
         }
 
     }
