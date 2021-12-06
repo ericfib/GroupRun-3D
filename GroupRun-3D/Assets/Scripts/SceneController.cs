@@ -16,8 +16,11 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > 450f)
+        if (player.transform.position.z > 450f) //win condition
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        else if (player.transform.childCount <= 0) //lose condition
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
