@@ -8,10 +8,10 @@ public class PlayerCollision : MonoBehaviour
     // Start is called before the first frame update
     public GameObject splash;
     public Animator anim;
+    public GameObject splash_ps;
 
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -20,8 +20,10 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.tag == "dieObstacle")
         {
             Vector3 deathPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-            Instantiate(splash, deathPos, transform.rotation);
             Destroy(transform.parent.gameObject);
+
+            Instantiate(splash, deathPos, transform.rotation);
+            Instantiate(splash_ps, deathPos, Quaternion.identity);
         }
 
     }
