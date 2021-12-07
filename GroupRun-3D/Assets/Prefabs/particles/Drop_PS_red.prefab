@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3042420156958389162}
   - component: {fileID: 3042420156958389165}
   m_Layer: 0
-  m_Name: Drop_PS
+  m_Name: Drop_PS_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4758,7 +4758,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 302b8265a1aef85489a7b1c490ab2eaf, type: 2}
+  - {fileID: 2100000, guid: 903be700143c58b45966adbd99bc3fa2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

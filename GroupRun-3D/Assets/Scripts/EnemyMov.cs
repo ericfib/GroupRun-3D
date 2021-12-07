@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class EnemyMov : MonoBehaviour
 {
-    public GameObject player, splash;
+    public GameObject player, splash, splash_ps;
     public float speed;
     public float attackRange;
     private float dist;
     private Animator anim;
-    private bool attacking;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        attacking = false;
     }
 
     // Update is called once per frame
@@ -42,6 +40,7 @@ public class EnemyMov : MonoBehaviour
         {
             Vector3 deathPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             Instantiate(splash, deathPos, transform.rotation);
+            Instantiate(splash_ps, new Vector3(deathPos.x, transform.position.y + 5f, deathPos.z), Quaternion.identity);
             Destroy(transform.gameObject);
         }
 

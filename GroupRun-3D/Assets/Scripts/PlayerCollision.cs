@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
             Destroy(transform.parent.gameObject);
 
             Instantiate(splash, deathPos, transform.rotation);
-            Instantiate(splash_ps, deathPos, Quaternion.identity);
+            Instantiate(splash_ps, new Vector3(deathPos.x, transform.position.y + 5f, deathPos.z), Quaternion.identity);
         }
 
     }
