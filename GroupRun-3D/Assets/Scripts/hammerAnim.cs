@@ -15,9 +15,10 @@ public class hammerAnim : MonoBehaviour
         anim.SetBool("isLeft", isLeft);
     }
 
-    public void playSparksPS()
+    public void HammerHit()
     {
         ps.Play();
+        FindObjectOfType<AudioManager>().Play("hammerHit");
     }
 
     // Update is called once per frame

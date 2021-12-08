@@ -31,6 +31,11 @@ public class SpikesMov : MonoBehaviour
     private float timeElapsed;
     private Animator anim;
 
+    public void spikesActivation()
+    {
+        FindObjectOfType<AudioManager>().Play("spikesActivate");
+    }
+
     // Start is called before the first frame update
     void Start()
     {

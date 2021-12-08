@@ -67,6 +67,7 @@ public class multiply_player : MonoBehaviour
                 Debug.Log("VOY A SPAWNEAR COSAS");
                 SpawnItem();
             }
+            FindObjectOfType<AudioManager>().Play("playerMultiply");
         }
 
         if (transform.childCount >= maxChildren) needsToEvolve = true;

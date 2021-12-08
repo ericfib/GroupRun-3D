@@ -24,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
 
             Instantiate(splash, deathPos, transform.rotation);
             Instantiate(splash_ps, new Vector3(deathPos.x, transform.position.y + 5f, deathPos.z), Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("playerDeath");
         }
 
     }
