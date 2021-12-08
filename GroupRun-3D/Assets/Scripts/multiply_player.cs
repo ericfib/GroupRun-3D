@@ -45,7 +45,7 @@ public class multiply_player : MonoBehaviour
                 transform.localScale = new Vector3(newScale, newScale, newScale);
             }
 
-            if (transform.position.y <= 42.1)
+            if (transform.position.y <= 52.1)
             {
                 float newPosition = Mathf.SmoothDamp(transform.position.y, 42.1f + transform.position.y, ref yVelocity, 0.3f);
                 transform.position = new Vector3 (transform.position.x, newPosition, transform.position.z);
