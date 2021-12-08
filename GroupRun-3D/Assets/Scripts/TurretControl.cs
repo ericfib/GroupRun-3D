@@ -6,6 +6,7 @@ public class TurretControl : MonoBehaviour
 {
     //shoot variables
     public GameObject firePoint, bullet;
+    public ParticleSystem fire_ps;
     public float fireRate = 0.5f;
     private float noShootTime;
     private float levelTime;
@@ -46,6 +47,7 @@ public class TurretControl : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        fire_ps.Play();
         noShootTime = 0;
     }
 }
