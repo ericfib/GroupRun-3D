@@ -11,7 +11,6 @@ public class PlayerMov : MonoBehaviour
 
     private Rigidbody rb;
     private float? lastMousePoint;
-    //private float startX, floorWidthStart, floorWidthEnd
     private float startScale;
     private bool hasEvolved;
 
@@ -19,9 +18,7 @@ public class PlayerMov : MonoBehaviour
     void Start()
     {
         lastMousePoint = null;
-        //startX = transform.position.x;
-        //floorWidthStart = 80 - 8;
-        //floorWidthEnd = 800 - 8;
+
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
         hasEvolved = false;
@@ -33,41 +30,68 @@ public class PlayerMov : MonoBehaviour
     {
         if (transform.localScale.x > startScale && !hasEvolved) hasEvolved = true;
 
-        else rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
+        else rb.velocity = new Vector3(rb.velocity.x, 0.0f, speedZ);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            lastMousePoint = Input.mousePosition.x;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            lastMousePoint = null;
-        }
-        if (lastMousePoint != null)
-        {
-            float difference = Input.mousePosition.x - lastMousePoint.Value;
 
-            bool? fillTocaBorde = null;
+        if (Input.GetKey(KeyCode.A))
+        {
+            bool filltocaBorde = watchChildrenBorders(true);
+            float newPosx = transform.position.x - (speedX * Time.deltaTime);
 
-            fillTocaBorde = watchChildrenBorders(difference);
-            float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
-            if (fillTocaBorde == false)
+            if (filltocaBorde == false)
             {
-                rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
+                rb.velocity = new Vector3(-speedX, 0.0f, speedZ);
             }
-            lastMousePoint = Input.mousePosition.x;
         }
+        
+        if (Input.GetKey(KeyCode.D))
+        {
+            bool filltocaBorde = watchChildrenBorders(true);
+            float newPosx = transform.position.x + (speedX * Time.deltaTime);
+
+            if (filltocaBorde == false)
+            {
+                rb.velocity = new Vector3(+speedX, 0.0f, speedZ);
+            }
+
+        }
+
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    lastMousePoint = Input.mousePosition.x;
+        //}
+        //else if (Input.GetMouseButtonUp(0))
+        //{
+        //    lastMousePoint = null;
+        //}
+        //if (lastMousePoint != null)
+        //{
+        //    float difference = Input.mousePosition.x - lastMousePoint.Value;
+
+        //    bool? fillTocaBorde = null;
+
+        //    fillTocaBorde = watchChildrenBorders(difference);
+        //    float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
+        //    if (fillTocaBorde == false)
+        //    {
+        //        rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
+        //    }
+        //    lastMousePoint = Input.mousePosition.x;
+        //}
     }
 
-    private bool watchChildrenBorders(float difference)
+    private bool watchChildrenBorders(bool left)
     {
 
         int n_children = transform.childCount;
         for (int i = 0; i < n_children; i++)
         {
+
             Vector3 child_pos = transform.GetChild(i).transform.position;
             float newPosx;
-            newPosx = child_pos.x + (difference * speedX) * Time.deltaTime;
+            if (left) newPosx = child_pos.x - (speedX * Time.deltaTime);
+            else newPosx = child_pos.x + (speedX * Time.deltaTime);
             if (newPosx < -40 || newPosx > 40) return true;
         }
 

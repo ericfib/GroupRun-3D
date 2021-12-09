@@ -47,8 +47,11 @@ public class SceneController : MonoBehaviour
                 if (timerToChange >= 0.5f) Fade(3);
             }
         }
-       
-            
+        if (player.transform.childCount <= 0) //lose condition
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
     }
 
     void Fade(int lvltoload)
