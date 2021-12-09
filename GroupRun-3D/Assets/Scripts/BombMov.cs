@@ -41,10 +41,10 @@ public class BombMov : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !exploding)
         {
             anim.SetTrigger("attack01");
-
+            FindObjectOfType<AudioManager>().Play("bombExplosion");
             exploding = true;
         }
 
