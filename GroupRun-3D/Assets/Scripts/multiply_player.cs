@@ -94,7 +94,7 @@ public class multiply_player : MonoBehaviour
 
             if (!tooClose)
             {
-                var newObj = GameObject.Instantiate(cloneObject, new Vector3(aux.x, 0.0f, aux.y), gameObject.transform.rotation);
+                var newObj = GameObject.Instantiate(cloneObject, new Vector3(aux.x, 0.5f, aux.y), gameObject.transform.rotation);
                 newObj.transform.parent = gameObject.transform;
                 found = true;
             } else
