@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMov : MonoBehaviour
 {
     public GameObject player;
     public float offsetChangeY = 90, offsetChangeZ = 80;
 
-    private float offset;
+    private float offset, timerAfterPhaseChange;
     private bool changedPhase;
     float yVelocity = 0.0f;
 
@@ -29,18 +30,21 @@ public class CameraMov : MonoBehaviour
         {
 
             changedPhase = true;
+            timerAfterPhaseChange = 0.0f;
             targetPos.y = offsetChangeY + player.transform.position.y;
-            targetPos.z = player.transform.position.z - offsetChangeZ ;
+            targetPos.z = player.transform.position.z;
         }
 
         if (changedPhase)
         {
+            timerAfterPhaseChange += Time.deltaTime;
             if (transform.position.y < targetPos.y)
             {
                 float newPositionY = Mathf.SmoothDamp(transform.position.y, targetPos.y, ref yVelocity, 0.3f);
-                transform.position = new Vector3(336, newPositionY, transform.position.z-270);
-            }  
-            
+                float newPositionZ = Mathf.SmoothDamp(transform.position.z, targetPos.z, ref yVelocity, 0.3f);
+                transform.position = new Vector3(transform.position.x, newPositionY, transform.position.z);
+            }
+
         }
     
     }

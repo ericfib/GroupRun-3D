@@ -11,8 +11,6 @@ public class multiply_player : MonoBehaviour
     public Vector2 regionSize = Vector2.one;
     public int maxChildren = 15;
     float yVelocity = 0.0f;
-    float smoothTime = 3.0f;
-
 
     private float startScale, targetScale;
     private Vector3 offset;
@@ -39,9 +37,10 @@ public class multiply_player : MonoBehaviour
         
         if(gameObject.transform.childCount == 1 && needsToEvolve)
         {
+            //TRANSFORMATION
             if (transform.localScale.y <= 10.0f)
             {
-                float newScale = Mathf.SmoothDamp(transform.localScale.x, 10.0f * transform.localScale.x, ref yVelocity, smoothTime);
+                float newScale = Mathf.SmoothDamp(transform.localScale.x, 10.0f * transform.localScale.x, ref yVelocity, 4.0f);
                 transform.localScale = new Vector3(newScale, newScale, newScale);
             }
 

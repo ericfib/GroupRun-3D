@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMov : MonoBehaviour
 {
     public float speedX = 5.0f;
-    private float speedZ = 50.0f;
+    public float speedZ = 50.0f;
     public GameObject floor;
     public int maxChildren = 15;
 
@@ -33,11 +33,6 @@ public class PlayerMov : MonoBehaviour
     {
         if (transform.localScale.x > startScale && !hasEvolved) hasEvolved = true;
 
-        if (hasEvolved)
-        {
-            speedZ = 400.0f;
-            rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
-        }
         else rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
 
         if (Input.GetMouseButtonDown(0))
@@ -55,9 +50,7 @@ public class PlayerMov : MonoBehaviour
             bool? fillTocaBorde = null;
 
             fillTocaBorde = watchChildrenBorders(difference);
-            float newPosx;
-            if (hasEvolved) newPosx = transform.position.x + (difference * (5 * speedX)) * Time.deltaTime;
-            else newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
+            float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
             if (fillTocaBorde == false)
             {
                 rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
@@ -74,16 +67,8 @@ public class PlayerMov : MonoBehaviour
         {
             Vector3 child_pos = transform.GetChild(i).transform.position;
             float newPosx;
-            if (hasEvolved)
-            {
-                newPosx = child_pos.x + (difference * (2 * speedX)) * Time.deltaTime;
-                if (newPosx < -35 || newPosx > 700) return true;
-            }
-            else
-            {
-                newPosx = child_pos.x + (difference * speedX) * Time.deltaTime;
-                if (newPosx < -40 || newPosx > 40) return true;
-            }
+            newPosx = child_pos.x + (difference * speedX) * Time.deltaTime;
+            if (newPosx < -40 || newPosx > 40) return true;
         }
 
         return false; 
