@@ -5,11 +5,11 @@ using UnityEngine;
 public static class PoissonDiscSampling
 {
 
-	public static List<Vector2> GeneratePoints(float radius, float cellSize, int[,] grid, Vector2 sampleRegionSize, int maxPoints, int numSamplesBeforeRejection = 30)
+	public static List<Vector2> GeneratePoints(float radius, Vector2 sampleRegionSize, int maxPoints, int numSamplesBeforeRejection = 30)
 	{
-		//float cellSize = radius / Mathf.Sqrt(2);
+		float cellSize = radius / Mathf.Sqrt(2);
 
-		//original -> int[,] grid = new int[Mathf.CeilToInt(sampleRegionSize.x / cellSize), Mathf.CeilToInt(sampleRegionSize.y / cellSize)];
+		int[,] grid = new int[Mathf.CeilToInt(sampleRegionSize.x / cellSize), Mathf.CeilToInt(sampleRegionSize.y / cellSize)];
 		
 		
 		List<Vector2> points = new List<Vector2>();
