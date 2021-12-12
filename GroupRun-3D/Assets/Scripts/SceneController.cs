@@ -18,6 +18,18 @@ public class SceneController : MonoBehaviour
     {
         iniScale = player.transform.localScale.x;
         hasChanged = false;
+
+        //level music
+        if (!isCarScene) //1st fase
+        {
+            FindObjectOfType<AudioManager>().Stop("2faseMusic");
+            FindObjectOfType<AudioManager>().Play("1faseMusic");
+        }
+        else
+        { //2nd fase
+            FindObjectOfType<AudioManager>().Stop("1faseMusic");
+            FindObjectOfType<AudioManager>().Play("2faseMusic");
+        }
     }
 
     // Update is called once per frame

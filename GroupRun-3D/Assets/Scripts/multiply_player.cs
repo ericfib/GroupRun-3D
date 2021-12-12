@@ -10,12 +10,14 @@ public class multiply_player : MonoBehaviour
     public GameObject cloneObject;
     public Vector2 regionSize = Vector2.one;
     public int maxChildren = 15;
+    public ParticleSystem grow_ps;
     float yVelocity = 0.0f;
 
     private float startScale, targetScale;
     private Vector3 offset;
     private float cellSize, radius, timerToTransform;
-
+    private bool psInstantiated;
+    private GameObject ps;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class multiply_player : MonoBehaviour
         timerToTransform = 0.0f;
         startScale = transform.localScale.x;
         targetScale = startScale * 10.0f;
+        psInstantiated = false;
     }
 
     // Update is called once per frame
@@ -69,9 +72,18 @@ public class multiply_player : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("playerMultiply");
         }
 
-        if (transform.childCount >= maxChildren) needsToEvolve = true;
+        if (transform.childCount >= maxChildren)
+        {
+            needsToEvolve = true;
+            if (!psInstantiated)
+            {
+                ps = Instantiate(grow_ps, transform.position, Quaternion.identity).gameObject;
+                psInstantiated = true;
+                FindObjectOfType<AudioManager>().Play("playerGrow");
+            }
+        }
 
-    }
+        }
     
     private void SpawnItem ()
     {
@@ -116,8 +128,17 @@ public class multiply_player : MonoBehaviour
             childTF.LookAt(targetPostition);
             childTF.position = Vector3.MoveTowards(childTF.position, targetPostition, 20 * Time.deltaTime);
 
-            if (childTF.position == targetPostition) Destroy(transform.GetChild(i).gameObject);
+            if (childTF.position == targetPostition)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
         }
+
+        Vector3 targetPos = new Vector3(transform.position.x,
+                                       transform.position.y,
+                                       transform.position.z);
+
+        ps.transform.position = Vector3.MoveTowards(ps.transform.position, targetPos, 20 * Time.deltaTime);
     }
    
 }

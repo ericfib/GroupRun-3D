@@ -942,7 +942,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 24.82, y: 0, z: 0}
 --- !u!114 &911381031
 MonoBehaviour:
@@ -1059,6 +1059,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 822883517566056888, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
+      propertyPath: floor
+      value: 
+      objectReference: {fileID: 183799951}
     - target: {fileID: 5358097234811742870, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1119,7 +1123,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
 --- !u!1 &1747886548 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1062441800523290030, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4393311574748550550, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
   m_PrefabInstance: {fileID: 1747886547}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2035818153 stripped
