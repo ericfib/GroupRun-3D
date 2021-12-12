@@ -216,6 +216,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &145157241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8752399670303807574, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
+  m_PrefabInstance: {fileID: 1747886547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &174743452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,7 +279,7 @@ PrefabInstance:
     - target: {fileID: 1559020369782801013, guid: e9704cfac2f419b41a3358b33c62805c, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1747886548}
+      objectReference: {fileID: 145157241}
     - target: {fileID: 1559020369782801013, guid: e9704cfac2f419b41a3358b33c62805c, type: 3}
       propertyPath: nextLevel
       value: 1
@@ -870,7 +875,6 @@ GameObject:
   m_Component:
   - component: {fileID: 911381030}
   - component: {fileID: 911381029}
-  - component: {fileID: 911381028}
   - component: {fileID: 911381031}
   m_Layer: 0
   m_Name: Main Camera
@@ -879,14 +883,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &911381028
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911381027}
-  m_Enabled: 1
 --- !u!20 &911381029
 Camera:
   m_ObjectHideFlags: 0
@@ -956,7 +952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a6fbacab782154d9451656936f644a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1747886548}
+  player: {fileID: 145157241}
   offsetChangeY: 90
   offsetChangeZ: 80
 --- !u!1 &960025931
@@ -1119,13 +1115,12 @@ PrefabInstance:
       propertyPath: speedZ
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 8752399670303807572, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
+      propertyPath: floor
+      value: 
+      objectReference: {fileID: 183799951}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
---- !u!1 &1747886548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4393311574748550550, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
-  m_PrefabInstance: {fileID: 1747886547}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2035818153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8827232012360862104, guid: a719a9d477d25e24a8d881d83565f77f, type: 3}
