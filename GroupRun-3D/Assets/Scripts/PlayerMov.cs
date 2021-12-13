@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
-    public float speedX = 5.0f;
-    public float speedZ = 50.0f;
+    public float speedX;
+    public float speedZ;
     public GameObject floor;
     public int maxChildren = 15;
 
     private Rigidbody rb;
-    private float? lastMousePoint;
     private float startScale;
     private bool hasEvolved;
 
     // Start is called before the first frame update
     void Start()
     {
-        lastMousePoint = null;
-
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
         hasEvolved = false;
         startScale = transform.localScale.x;
+    }
+
+    // Awake is called when the script instance is being loaded
+    private void Awake()
+    {
+        FindObjectOfType<SceneController>().SetPlayerInstance(this.gameObject);
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class PlayerMov : MonoBehaviour
 
             if (filltocaBorde == false)
             {
-                rb.velocity = new Vector3(-speedX, 0.0f, speedZ);
+                rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
             }
         }
         
@@ -51,7 +54,7 @@ public class PlayerMov : MonoBehaviour
 
             if (filltocaBorde == false)
             {
-                rb.velocity = new Vector3(+speedX, 0.0f, speedZ);
+                rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
             }
 
         }

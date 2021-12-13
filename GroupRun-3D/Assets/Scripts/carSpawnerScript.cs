@@ -5,6 +5,7 @@ using UnityEngine;
 public class carSpawnerScript : MonoBehaviour
 {
     public List<GameObject> cars = new List<GameObject>();
+    public GameObject playergroup;
     public float SpeedZcar;
     
     private float timeToSpawn;
@@ -19,8 +20,8 @@ public class carSpawnerScript : MonoBehaviour
     void Update()
     {
         timeToSpawn += Time.deltaTime;
-
-        if (timeToSpawn > 2.0f)
+        float distancePlayerToTunnel = transform.position.z - playergroup.transform.position.z;
+        if (timeToSpawn > 2.0f && distancePlayerToTunnel >= 70.0f)
         {
             int index = Random.Range(0, cars.Count);
             Vector3 spawnCoord = new Vector3(Random.Range(-35, 35), 0.0f, transform.position.z);
