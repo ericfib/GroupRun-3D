@@ -6,13 +6,13 @@ using TMPro;
 public class multiply_player : MonoBehaviour
 {
 
-    public bool isOriginal, needsToEvolve;
     public GameObject cloneObject;
     public Vector2 regionSize = Vector2.one;
     public int maxChildren = 15;
     float yVelocity = 0.0f;
 
-    private float startScale, targetScale;
+    private bool needsToEvolve;
+    private float startScale;
     private Vector3 offset;
     private float cellSize, radius, timerToTransform;
 
@@ -25,7 +25,6 @@ public class multiply_player : MonoBehaviour
         cellSize = radius  / Mathf.Sqrt(2);
         timerToTransform = 0.0f;
         startScale = transform.localScale.x;
-        targetScale = startScale * 10.0f;
     }
 
     // Update is called once per frame
@@ -73,11 +72,15 @@ public class multiply_player : MonoBehaviour
 
     }
     
-    private void SpawnItem ()
+    public void SpawnItem (params int[] nChildToSpawn)
     {
         bool tooClose, found;
         tooClose = found = false;
-        int n_children = transform.childCount;
+        int n_children;
+        Material originalMaterial = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Renderer>().material;
+
+        if (nChildToSpawn.Length > 0) n_children = nChildToSpawn[0];
+        else n_children = transform.childCount;
 
         while (found == false)
         {
@@ -96,6 +99,7 @@ public class multiply_player : MonoBehaviour
             {
                 var newObj = GameObject.Instantiate(cloneObject, new Vector3(aux.x, 0.0f, aux.y), gameObject.transform.rotation);
                 newObj.transform.parent = gameObject.transform;
+                newObj.transform.GetChild(0).GetComponent<Renderer>().material = originalMaterial;
                 found = true;
             } else
             {

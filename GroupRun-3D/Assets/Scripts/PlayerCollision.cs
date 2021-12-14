@@ -12,12 +12,14 @@ public class PlayerCollision : MonoBehaviour
 
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "dieObstacle")
+        string material = gameObject.GetComponent<Renderer>().material.name;
+        if (other.gameObject.tag == "dieObstacle" && material == "PJ_Good (Instance)")
         {
             Vector3 deathPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             Destroy(transform.parent.gameObject);

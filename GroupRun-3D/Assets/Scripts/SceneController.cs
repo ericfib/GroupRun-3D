@@ -67,7 +67,7 @@ public class SceneController : MonoBehaviour
 
         if (isCarScene)
         {
-            if (player.transform.position.z >= 1030)
+            if (player.transform.position.z >= 1000)
             {
                 Fade();
             }
@@ -101,7 +101,7 @@ public class SceneController : MonoBehaviour
 
     }
 
-    void Fade(params int[] lvl)
+    public void Fade(params int[] lvl)
     {
         if (lvl.Length == 0)
         {

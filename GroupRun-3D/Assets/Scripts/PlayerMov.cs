@@ -59,30 +59,7 @@ public class PlayerMov : MonoBehaviour
 
         }
 
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    lastMousePoint = Input.mousePosition.x;
-        //}
-        //else if (Input.GetMouseButtonUp(0))
-        //{
-        //    lastMousePoint = null;
-        //}
-        //if (lastMousePoint != null)
-        //{
-        //    float difference = Input.mousePosition.x - lastMousePoint.Value;
-
-        //    bool? fillTocaBorde = null;
-
-        //    fillTocaBorde = watchChildrenBorders(difference);
-        //    float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
-        //    if (fillTocaBorde == false)
-        //    {
-        //        rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
-        //    }
-        //    lastMousePoint = Input.mousePosition.x;
-        //}
-    }
+     }
 
     private bool watchChildrenBorders(bool left)
     {

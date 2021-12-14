@@ -20,8 +20,7 @@ public class carSpawnerScript : MonoBehaviour
     void Update()
     {
         timeToSpawn += Time.deltaTime;
-        float distancePlayerToTunnel = transform.position.z - playergroup.transform.position.z;
-        if (timeToSpawn > 2.0f && distancePlayerToTunnel >= 70.0f)
+        if (timeToSpawn > 2.0f && (playergroup.transform.position.z < 1000.0f))
         {
             int index = Random.Range(0, cars.Count);
             Vector3 spawnCoord = new Vector3(Random.Range(-35, 35), 0.0f, transform.position.z);
