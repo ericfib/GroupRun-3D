@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5497333849622502160
+--- !u!1 &7275456295241192718
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8602354730403942343}
-  - component: {fileID: 5644518405881445140}
+  - component: {fileID: 1126896253371113017}
+  - component: {fileID: 6390452761053106067}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8602354730403942343
+--- !u!4 &1126896253371113017
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5497333849622502160}
+  m_GameObject: {fileID: 7275456295241192718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5644518405881445140
+--- !u!114 &6390452761053106067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5497333849622502160}
+  m_GameObject: {fileID: 7275456295241192718}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 768f82aee71d91f4090949d397f6460f, type: 3}
@@ -82,6 +82,20 @@ MonoBehaviour:
   - name: playerGrow
     clip: {fileID: 8300000, guid: 3c79211590a3f4f4d9279e406847454a, type: 3}
     volume: 1
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: 1faseMusic
+    clip: {fileID: 8300000, guid: 0656164fe640ce34cb9c8ba64b5ca2b5, type: 3}
+    volume: 0.051
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: 2faseMusic
+    clip: {fileID: 8300000, guid: 74215132cc7c75b42afda0b2117057e9, type: 3}
+    volume: 0.059
     pitch: 1
     blend: 0
     maxDistance: 100
