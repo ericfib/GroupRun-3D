@@ -8,16 +8,31 @@ public class SceneController : MonoBehaviour
     public GameObject player, finishObject;
     public Animator animator;
     public int nextLevel;
-    public bool isCarScene;
     
+    private bool isCarScene;
     private float iniScale, timerToChange;
     private bool hasChanged;
-    private int levelToLoad;
-    // Start is called before the first frame update
-    void Start()
+    private int levelToLoad, currentLevel;
+
+    public static SceneController instance;
+
+    private void Awake()
     {
+        
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         iniScale = player.transform.localScale.x;
-        hasChanged = false;
+        isCarScene = hasChanged = false;
+        if (SceneManager.GetActiveScene().buildIndex == 3) isCarScene = true;
+        else
+        {
+            currentLevel = SceneManager.GetActiveScene().buildIndex;
+        }
 
         //level music
         if (!isCarScene) //1st fase
@@ -27,10 +42,51 @@ public class SceneController : MonoBehaviour
         }
         else
         { //2nd fase
+
+            FindObjectOfType<AudioManager>().Stop("1faseMusic");
+            FindObjectOfType<AudioManager>().Play("2faseMusic");
+        }
+
+        DontDestroyOnLoad(this);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+
+    }
+    public void SetPlayerInstance(GameObject obj)
+    {
+        player = obj;
+        loadedScene();
+    }
+
+    private void loadedScene()
+    {
+        iniScale = player.transform.localScale.x;
+
+        isCarScene = hasChanged = false;
+        if (SceneManager.GetActiveScene().buildIndex == 3) isCarScene = true;
+        else
+        {
+            currentLevel = SceneManager.GetActiveScene().buildIndex;
+        }
+
+        //level music
+        if (!isCarScene) //1st fase
+        {
+            FindObjectOfType<AudioManager>().Stop("2faseMusic");
+            FindObjectOfType<AudioManager>().Play("1faseMusic");
+        }
+        else
+        { //2nd fase
+
             FindObjectOfType<AudioManager>().Stop("1faseMusic");
             FindObjectOfType<AudioManager>().Play("2faseMusic");
         }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -38,9 +94,9 @@ public class SceneController : MonoBehaviour
 
         if (isCarScene)
         {
-            if ((finishObject.transform.position.z - player.transform.position.z) < 1.0f)
+            if (player.transform.position.z >= 1000)
             {
-                Fade(nextLevel);
+                Fade();
             }
         }
         else
@@ -56,21 +112,46 @@ public class SceneController : MonoBehaviour
             else
             {
                 timerToChange += Time.deltaTime;
-                if (timerToChange >= 0.5f) Fade(3);
+                if (timerToChange >= 0.5f)
+                {
+                    hasChanged = false;
+                    timerToChange = 0.0f;
+                    Fade(3);
+                }
             }
         }
-       
-            
+        if (player.transform.childCount <= 0) //lose condition
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            loadedScene();
+        }
+
     }
 
-    void Fade(int lvltoload)
+    public void Fade(params int[] lvl)
     {
-        levelToLoad = lvltoload;
+        if (lvl.Length == 0)
+        {
+            //will work with complete scenes
+            //if (currentLevel < 1) levelToLoad = currentLevel + 1;
+            //else levelToLoad = 1;
+
+            levelToLoad = 1;
+
+        }
+        else
+        {
+            levelToLoad = lvl[0];
+        }
+
+
         animator.SetTrigger("fadeout");
     }
 
     void onFadeComplete()
     {
         SceneManager.LoadScene(levelToLoad);
+        loadedScene();
+        animator.SetTrigger("fadein");
     }
 }
