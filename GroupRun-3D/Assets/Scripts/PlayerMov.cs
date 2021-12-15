@@ -20,17 +20,8 @@ public class PlayerMov : MonoBehaviour
         rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
         hasEvolved = false;
         startScale = transform.localScale.x;
-    }
 
-    // Awake is called when the script instance is being loaded
-    private void Awake()
-    {
-        SceneController sc = FindObjectOfType<SceneController>();
-        if (sc.player == null)
-        {
-            sc.SetPlayerInstance(this.gameObject);
-        }
-
+        FindObjectOfType<SceneController>().SetPlayerInstance(this.gameObject);
     }
 
     // Update is called once per frame

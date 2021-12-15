@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public GameObject player, finishObject;
+    public GameObject finishObject;
+    private GameObject player;
     public Animator animator;
     public int nextLevel;
     
@@ -26,25 +27,31 @@ public class SceneController : MonoBehaviour
             return;
         }
 
-        iniScale = player.transform.localScale.x;
-        isCarScene = hasChanged = false;
-        if (SceneManager.GetActiveScene().buildIndex == 3) isCarScene = true;
-        else
+        if (SceneManager.GetActiveScene().buildIndex > 0 && SceneManager.GetActiveScene().buildIndex < 6)
         {
-            currentLevel = SceneManager.GetActiveScene().buildIndex;
-        }
 
-        //level music
-        if (!isCarScene) //1st fase
-        {
-            FindObjectOfType<AudioManager>().Stop("2faseMusic");
-            FindObjectOfType<AudioManager>().Play("1faseMusic");
-        }
-        else
-        { //2nd fase
+            iniScale = player.transform.localScale.x;
+            isCarScene = hasChanged = false;
+            int buildindex = SceneManager.GetActiveScene().buildIndex;
 
-            FindObjectOfType<AudioManager>().Stop("1faseMusic");
-            FindObjectOfType<AudioManager>().Play("2faseMusic");
+            if (buildindex == 3) isCarScene = true;
+            else if (buildindex > 0 && buildindex < 6)
+            {
+                currentLevel = SceneManager.GetActiveScene().buildIndex;
+            }
+
+            //level music
+            if (!isCarScene) //1st fase
+            {
+                FindObjectOfType<AudioManager>().Stop("2faseMusic");
+                FindObjectOfType<AudioManager>().Play("1faseMusic");
+            }
+            else
+            { //2nd fase
+
+                FindObjectOfType<AudioManager>().Stop("1faseMusic");
+                FindObjectOfType<AudioManager>().Play("2faseMusic");
+            }
         }
 
         DontDestroyOnLoad(this);
@@ -65,9 +72,8 @@ public class SceneController : MonoBehaviour
     private void loadedScene()
     {
         iniScale = player.transform.localScale.x;
-
         isCarScene = hasChanged = false;
-        if (SceneManager.GetActiveScene().buildIndex == 3) isCarScene = true;
+        if (SceneManager.GetActiveScene().buildIndex == 6) isCarScene = true;
         else
         {
             currentLevel = SceneManager.GetActiveScene().buildIndex;
@@ -91,39 +97,45 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex > 0 && SceneManager.GetActiveScene().buildIndex <= 6)
+        {
 
-        if (isCarScene)
-        {
-            if (player.transform.position.z >= 1000)
+            if (isCarScene)
             {
-                Fade();
-            }
-        }
-        else
-        {
-            if (!hasChanged)
-            {
-                if (iniScale < player.transform.localScale.x)
+                if (player.transform.position.z >= 1000)
                 {
-                    hasChanged = true;
-                    timerToChange = 0.0f;
+                    Fade();
                 }
             }
             else
             {
-                timerToChange += Time.deltaTime;
-                if (timerToChange >= 0.5f)
+                if (!hasChanged)
                 {
-                    hasChanged = false;
-                    timerToChange = 0.0f;
-                    Fade(3);
+                    if (iniScale < player.transform.localScale.x)
+                    {
+                        hasChanged = true;
+                        timerToChange = 0.0f;
+                    }
+                }
+                else
+                {
+                    timerToChange += Time.deltaTime;
+                    if (timerToChange >= 0.5f)
+                    {
+                        hasChanged = false;
+                        timerToChange = 0.0f;
+                        Fade(6);
+                    }
                 }
             }
-        }
-        if (player.transform.childCount <= 0) //lose condition
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            loadedScene();
+            if (player.transform.childCount <= 0) //lose condition
+            {
+                FindObjectOfType<AudioManager>().Stop("1faseMusic");
+                FindObjectOfType<AudioManager>().Stop("2faseMusic");
+
+                SceneManager.LoadScene(7);
+
+            }
         }
 
     }
@@ -133,11 +145,13 @@ public class SceneController : MonoBehaviour
         if (lvl.Length == 0)
         {
             //will work with complete scenes
-            //if (currentLevel < 1) levelToLoad = currentLevel + 1;
-            //else levelToLoad = 1;
-
-            levelToLoad = 1;
-
+            if (currentLevel < 6 && !isCarScene) levelToLoad = currentLevel + 1;
+            else
+            {
+                levelToLoad = 0;
+                FindObjectOfType<AudioManager>().Stop("1faseMusic");
+                FindObjectOfType<AudioManager>().Stop("2faseMusic");
+            }
         }
         else
         {
@@ -151,7 +165,12 @@ public class SceneController : MonoBehaviour
     void onFadeComplete()
     {
         SceneManager.LoadScene(levelToLoad);
-        loadedScene();
+        if (levelToLoad > 0 && levelToLoad <= 6) loadedScene();
         animator.SetTrigger("fadein");
+    }
+
+    public int getCurrentLevel()
+    {
+        return currentLevel;
     }
 }

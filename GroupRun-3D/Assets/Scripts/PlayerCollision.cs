@@ -19,7 +19,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         string material = gameObject.GetComponent<Renderer>().material.name;
-        if (other.gameObject.tag == "dieObstacle" && material == "PJ_Good (Instance)")
+        if (other.gameObject.tag == "dieObstacle" && material.Substring(0, 7) == "PJ_Good")
         {
             Vector3 deathPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             Destroy(transform.parent.gameObject);

@@ -7,16 +7,34 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayButton(int lvl)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + lvl);
+        if (lvl == -1) //try again
+        {
+            int currentlevel = FindObjectOfType<SceneController>().getCurrentLevel();
+            SceneManager.LoadScene(currentlevel);
+        }
+        else
+        {
+            SceneManager.LoadScene(lvl);
+        }
     }
-
-    public void ControlsButton()
-    {
-
-    }
-
     public void QuitButton()
     {
         Application.Quit();
     }
+
+    public void clickSound()
+    {
+        FindObjectOfType<AudioManager>().Play("ButtonClick");
+    }
+
+    public void pointSound()
+    {
+        FindObjectOfType<AudioManager>().Play("ButtonPointer");
+    }
+
+    public void GoMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
+
