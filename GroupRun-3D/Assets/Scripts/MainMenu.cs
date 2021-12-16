@@ -12,6 +12,12 @@ public class MainMenu : MonoBehaviour
             int currentlevel = FindObjectOfType<SceneController>().getCurrentLevel();
             SceneManager.LoadScene(currentlevel);
         }
+        else if (lvl == -2) //next level
+        {
+            int currentlevel = FindObjectOfType<SceneController>().getCurrentLevel();
+            SceneManager.LoadScene(currentlevel + 1);
+        }
+
         else
         {
             SceneManager.LoadScene(lvl);

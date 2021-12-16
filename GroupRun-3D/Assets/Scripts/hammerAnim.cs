@@ -18,7 +18,7 @@ public class hammerAnim : MonoBehaviour
     public void HammerHit()
     {
         ps.Play();
-        FindObjectOfType<AudioManager>().Play("hammerHit");
+        GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame

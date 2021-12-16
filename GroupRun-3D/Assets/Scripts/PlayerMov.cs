@@ -32,7 +32,7 @@ public class PlayerMov : MonoBehaviour
         else rb.velocity = new Vector3(rb.velocity.x, 0.0f, speedZ);
 
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             bool filltocaBorde = watchChildrenBorders(true);
             float newPosx = transform.position.x - (speedX * Time.deltaTime);
@@ -43,9 +43,9 @@ public class PlayerMov : MonoBehaviour
             }
         }
         
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            bool filltocaBorde = watchChildrenBorders(true);
+            bool filltocaBorde = watchChildrenBorders(false);
             float newPosx = transform.position.x + (speedX * Time.deltaTime);
 
             if (filltocaBorde == false)
