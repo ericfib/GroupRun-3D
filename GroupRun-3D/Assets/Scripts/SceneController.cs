@@ -39,19 +39,6 @@ public class SceneController : MonoBehaviour
             {
                 currentLevel = SceneManager.GetActiveScene().buildIndex;
             }
-
-            //level music
-            if (!isCarScene) //1st fase
-            {
-                FindObjectOfType<AudioManager>().Stop("2faseMusic");
-                FindObjectOfType<AudioManager>().Play("1faseMusic");
-            }
-            else
-            { //2nd fase
-
-                FindObjectOfType<AudioManager>().Stop("1faseMusic");
-                FindObjectOfType<AudioManager>().Play("2faseMusic");
-            }
         }
 
         DontDestroyOnLoad(this);
@@ -78,19 +65,6 @@ public class SceneController : MonoBehaviour
         {
             currentLevel = SceneManager.GetActiveScene().buildIndex;
         }
-
-        //level music
-        if (!isCarScene) //1st fase
-        {
-            FindObjectOfType<AudioManager>().Stop("2faseMusic");
-            FindObjectOfType<AudioManager>().Play("1faseMusic");
-        }
-        else
-        { //2nd fase
-
-            FindObjectOfType<AudioManager>().Stop("1faseMusic");
-            FindObjectOfType<AudioManager>().Play("2faseMusic");
-        }
     }
 
 
@@ -102,7 +76,7 @@ public class SceneController : MonoBehaviour
 
             if (isCarScene)
             {
-                if (player.transform.position.z >= 1000)
+                if (player.transform.position.z >= 1000) //go next level
                 {
                     Fade();
                 }
@@ -120,7 +94,7 @@ public class SceneController : MonoBehaviour
                 else
                 {
                     timerToChange += Time.deltaTime;
-                    if (timerToChange >= 0.5f)
+                    if (timerToChange >= 0.5f) //start fase 2 (cars)
                     {
                         hasChanged = false;
                         timerToChange = 0.0f;
@@ -130,8 +104,6 @@ public class SceneController : MonoBehaviour
             }
             if (player.transform.childCount <= 0) //lose condition
             {
-                FindObjectOfType<AudioManager>().Stop("1faseMusic");
-                FindObjectOfType<AudioManager>().Stop("2faseMusic");
 
                 SceneManager.LoadScene(7);
 
@@ -145,12 +117,13 @@ public class SceneController : MonoBehaviour
         if (lvl.Length == 0)
         {
             //will work with complete scenes
-            if (currentLevel < 6 && !isCarScene) levelToLoad = currentLevel + 1;
+            if (currentLevel < 5) levelToLoad = currentLevel + 1;
             else
             {
-                levelToLoad = 0;
-                FindObjectOfType<AudioManager>().Stop("1faseMusic");
-                FindObjectOfType<AudioManager>().Stop("2faseMusic");
+                if (isCarScene)
+                {
+                    levelToLoad = 0;
+                }
             }
         }
         else

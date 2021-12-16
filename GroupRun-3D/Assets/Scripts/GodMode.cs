@@ -30,6 +30,7 @@ public class GodMode : MonoBehaviour
             timerToActivate = 0f;
             changePlayerColors();
             isActive = !isActive;
+            if (isActive) FindObjectOfType<AudioManager>().Play("activeGodMode");
         }
 
         foreach(KeyCode kcode in levels)
