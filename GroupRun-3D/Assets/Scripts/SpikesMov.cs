@@ -33,7 +33,7 @@ public class SpikesMov : MonoBehaviour
 
     public void spikesActivation()
     {
-        FindObjectOfType<AudioManager>().Play("spikesActivate");
+        GetComponent<AudioSource>().Play();
     }
 
     // Start is called before the first frame update
