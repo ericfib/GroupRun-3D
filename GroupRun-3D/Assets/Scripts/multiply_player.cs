@@ -10,6 +10,7 @@ public class multiply_player : MonoBehaviour
     public Vector2 regionSize = Vector2.one;
     public int maxChildren = 15;
     public ParticleSystem grow_ps;
+    public ProgressBarScript progressBar;
     float yVelocity = 0.0f;
 
     private bool needsToEvolve;
@@ -119,6 +120,8 @@ public class multiply_player : MonoBehaviour
                 newObj.transform.parent = gameObject.transform;
                 newObj.transform.GetChild(0).GetComponent<Renderer>().material = originalMaterial;
                 found = true;
+
+                progressBar.increaseNumber();
             } else
             {
                 return;
