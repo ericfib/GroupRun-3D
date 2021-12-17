@@ -79,10 +79,6 @@ public class SceneController : MonoBehaviour
                 if (player.transform.position.z >= 1000) //go next level
                 {
                     SceneManager.LoadScene(8);
-                    if (currentLevel == 5)
-                    {
-                        GameObject.Find("/Canvas/Menu/NextLevel").SetActive(false);
-                    }
                 }
             }
             else
