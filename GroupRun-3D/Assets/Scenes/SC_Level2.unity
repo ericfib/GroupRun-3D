@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -892,7 +892,7 @@ RectTransform:
   - {fileID: 4443603}
   - {fileID: 177710539}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1175,7 +1175,7 @@ RectTransform:
   - {fileID: 2111590369}
   - {fileID: 1528567697}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2644,7 +2644,7 @@ RectTransform:
   - {fileID: 874494440}
   - {fileID: 1926987043}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4021,7 +4021,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: b36688523f86ee040909a78be1147a19, type: 3}
 --- !u!114 &1133596662 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6423042526425048429, guid: b36688523f86ee040909a78be1147a19, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4815926091611796846, guid: b36688523f86ee040909a78be1147a19, type: 3}
   m_PrefabInstance: {fileID: 1133596661}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -4939,7 +4939,7 @@ RectTransform:
   - {fileID: 1476620603}
   - {fileID: 1743181759}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5457,7 +5457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1650443543
 GameObject:
@@ -5895,7 +5895,7 @@ RectTransform:
   - {fileID: 1034871832}
   - {fileID: 1067843625}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

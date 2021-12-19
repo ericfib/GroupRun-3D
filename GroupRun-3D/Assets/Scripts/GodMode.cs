@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.SceneManagement;
 
 public class GodMode : MonoBehaviour
 {
@@ -43,7 +44,8 @@ public class GodMode : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q) && timerToSpawn >= 1f)
         {
-            if (isActive)
+            int sceneindex = SceneManager.GetActiveScene().buildIndex;
+            if (isActive && (sceneindex >= 1 && sceneindex <= 5))
             {
                 multiply_player mult_script = transform.GetComponent<multiply_player>();
                 mult_script.SpawnItem(1);

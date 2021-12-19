@@ -121,7 +121,7 @@ public class multiply_player : MonoBehaviour
                 newObj.transform.GetChild(0).GetComponent<Renderer>().material = originalMaterial;
                 found = true;
 
-                progressBar.increaseNumber();
+                progressBar.modifyNumber(1);
             } else
             {
                 return;
