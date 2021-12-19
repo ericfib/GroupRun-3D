@@ -21,10 +21,7 @@ public class ProgressBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            increaseNumber();
-        }
+       
     }
 
     private void setTextValueTo(int value)
@@ -33,15 +30,10 @@ public class ProgressBarScript : MonoBehaviour
         child_tmpro.text = text_tmpro;
     }
 
-    public void increaseNumber()
+    public void modifyNumber(int val)
     {
-
-        if (slider.value < slider.maxValue)
-        {
-            slider.value += 1;
+            slider.value += val;
             setTextValueTo((int)slider.value);
-        }
-
     }
 
 }
