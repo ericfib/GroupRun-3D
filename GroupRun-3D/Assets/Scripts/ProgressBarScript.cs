@@ -8,6 +8,7 @@ public class ProgressBarScript : MonoBehaviour
 {
 
     public Slider slider;
+    public GameObject player;
 
     private TextMeshProUGUI child_tmpro;
     private string text_tmpro;
@@ -21,7 +22,7 @@ public class ProgressBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        modifyNumber(player.transform.childCount);
     }
 
     private void setTextValueTo(int value)
@@ -30,9 +31,9 @@ public class ProgressBarScript : MonoBehaviour
         child_tmpro.text = text_tmpro;
     }
 
-    public void modifyNumber(int val)
+    private void modifyNumber(int val)
     {
-            slider.value += val;
+            slider.value = val;
             setTextValueTo((int)slider.value);
     }
 

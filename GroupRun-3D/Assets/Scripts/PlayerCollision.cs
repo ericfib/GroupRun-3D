@@ -24,11 +24,15 @@ public class PlayerCollision : MonoBehaviour
             Vector3 deathPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             Destroy(transform.parent.gameObject);
             
-            FindObjectOfType<ProgressBarScript>().modifyNumber(-1);
 
             Instantiate(splash, deathPos, transform.rotation);
             Instantiate(splash_ps, new Vector3(deathPos.x, transform.position.y + 5f, deathPos.z), Quaternion.identity);
             FindObjectOfType<AudioManager>().Play("playerDeath");
+
+            if (other.name.Contains("bullet"))
+            {
+                Destroy(other.gameObject);
+            }
         }
 
     }
