@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 4078631802253943868}
-  bullet: {fileID: 652170873522163392, guid: 8616b94551b5215429a8ef6591419ba5, type: 3}
+  bullet: {fileID: 2601465265377942926, guid: 8616b94551b5215429a8ef6591419ba5, type: 3}
   fire_ps: {fileID: 4078631802170344679}
   fireRate: 0.5
   rotationAngle: 90
