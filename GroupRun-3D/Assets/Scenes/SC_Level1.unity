@@ -1950,7 +1950,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4981870132537201742, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
       propertyPath: speedX
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6496783828198166665, guid: 4b01c1a75e97a694e828c0df4a3d37ef, type: 3}
       propertyPath: gm_indicator

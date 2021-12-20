@@ -110,6 +110,11 @@ public class SceneController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
     }
 
     public void Fade(params int[] lvl)
