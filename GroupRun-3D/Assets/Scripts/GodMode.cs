@@ -10,14 +10,14 @@ public class GodMode : MonoBehaviour
 
     private KeyCode[] levels = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5 };
     private bool isActive;
-    private float timerToActivate, timerToSpawn;
+    private float timerToActivate, timerToSpawn, timerToChangeScene;
     // Start is called before the first frame update
     void Start()
     {
         //normal = new Color(0.769f, 1.000f, 1.000f, 0f);
         //godmode = new Color(1f, 0.996f, 0.768f, 1f);
         isActive = false;
-        timerToSpawn = timerToActivate = 0.0f;
+        timerToSpawn = timerToActivate = timerToChangeScene = 0.0f;
 
     }
 
@@ -26,6 +26,8 @@ public class GodMode : MonoBehaviour
     {
         timerToActivate += Time.deltaTime;
         timerToSpawn += Time.deltaTime;
+        timerToChangeScene += Time.deltaTime;
+
         if (Input.GetKey(KeyCode.G) && timerToActivate >= 1f)
         {
             timerToActivate = 0f;
@@ -36,8 +38,9 @@ public class GodMode : MonoBehaviour
 
         foreach(KeyCode kcode in levels)
         {
-            if (Input.GetKey(kcode) && isActive)
+            if (Input.GetKey(kcode) && isActive && timerToChangeScene >= 1.5f)
             {
+                timerToChangeScene = 0f;
                 loadLevel(kcode);
             }
         }
@@ -65,16 +68,16 @@ public class GodMode : MonoBehaviour
                 sc_controller.Fade(1);
                 break;
             case "Alpha2":
-                //sc_controller.Fade(2);
+                sc_controller.Fade(2);
                 break;
             case "Alpha3":
                 sc_controller.Fade(3);
                 break;
             case "Alpha4":
-                //sc_controller.Fade(4);
+                sc_controller.Fade(4);
                 break;
             case "Alpha5":
-                //sc_controller.Fade(5);
+                sc_controller.Fade(5);
                 break;
         }
             

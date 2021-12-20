@@ -19,5 +19,9 @@ public class BallMov : MonoBehaviour
         float newPosz = transform.position.z - (moveSpeed * Time.deltaTime);
         transform.position = new Vector3(transform.position.x, transform.position.y, newPosz);
         transform.Rotate(-rotationSpeed * Time.deltaTime, 0.0f, 0.0f);
+
+
+        if (transform.position.z <= -500f) Destroy(transform.gameObject);
+
     }
 }
