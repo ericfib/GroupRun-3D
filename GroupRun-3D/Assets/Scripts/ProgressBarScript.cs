@@ -33,8 +33,11 @@ public class ProgressBarScript : MonoBehaviour
 
     private void modifyNumber(int val)
     {
+        if (slider.value < 15)
+        {
             slider.value = val;
             setTextValueTo((int)slider.value);
+        }
     }
 
 }

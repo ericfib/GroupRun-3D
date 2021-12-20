@@ -76,7 +76,7 @@ public class SceneController : MonoBehaviour
 
             if (isCarScene)
             {
-                if (player.transform.position.z >= 1000) //go next level
+                if (player.transform.position.z >= 1030) //go next level
                 {
                     SceneManager.LoadScene(8);
                 }

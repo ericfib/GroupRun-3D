@@ -5,13 +5,10 @@ using UnityEngine;
 public class BulletMov : MonoBehaviour
 {
     public float speed = 20f;
-    private Rigidbody rb;
     private float aliveTime, lifeTime;
-
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         lifeTime = 10f;
         aliveTime = 0f;
     }
