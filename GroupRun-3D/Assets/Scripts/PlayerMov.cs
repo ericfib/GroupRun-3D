@@ -4,44 +4,75 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
-    public float speedX = 5.0f;
-    public float speedZ = 10.0f;
-    private float? lastMousePoint;
-    private float startX, floorWidth;
+    public float speedX;
+    public float speedZ;
     public GameObject floor;
+    public int maxChildren = 15;
+
+    private Rigidbody rb;
+    private float startScale;
+    private bool hasEvolved;
 
     // Start is called before the first frame update
     void Start()
     {
-        lastMousePoint = null;
-        startX = transform.position.x;
-        floorWidth = floor.GetComponent<Renderer>().bounds.size.x - 8f;
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0.0f, 0.0f, speedZ);
+        hasEvolved = false;
+        startScale = transform.localScale.x;
+
+        FindObjectOfType<SceneController>().SetPlayerInstance(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.localScale.x > startScale && !hasEvolved) hasEvolved = true;
 
-        if (Input.GetMouseButtonDown(0))
+        else rb.velocity = new Vector3(rb.velocity.x, 0.0f, speedZ);
+
+
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            lastMousePoint = Input.mousePosition.x;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            lastMousePoint = null;
-        }
-        if (lastMousePoint != null)
-        {
-            float difference = Input.mousePosition.x - lastMousePoint.Value;
-            float newPosx = transform.position.x + (difference * speedX) * Time.deltaTime;
-            if (newPosx < (startX + floorWidth/2) && newPosx > (startX - floorWidth/2))
+            bool filltocaBorde = watchChildrenBorders(true);
+            float newPosx = transform.position.x - (speedX * Time.deltaTime);
+
+            if (filltocaBorde == false)
             {
-                transform.position = new Vector3(newPosx, transform.position.y, transform.position.z);
+                rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
             }
-            lastMousePoint = Input.mousePosition.x;
+        }
+        
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            bool filltocaBorde = watchChildrenBorders(false);
+            float newPosx = transform.position.x + (speedX * Time.deltaTime);
+
+            if (filltocaBorde == false)
+            {
+                rb.MovePosition(new Vector3(newPosx, transform.position.y, transform.position.z));
+            }
+
         }
 
-        gameObject.transform.Translate(0.0f, 0.0f, speedZ * Time.deltaTime);
+     }
 
+    private bool watchChildrenBorders(bool left)
+    {
+
+        int n_children = transform.childCount;
+        for (int i = 0; i < n_children; i++)
+        {
+
+            Vector3 child_pos = transform.GetChild(i).transform.position;
+            float newPosx;
+            if (left) newPosx = child_pos.x - (speedX * Time.deltaTime);
+            else newPosx = child_pos.x + (speedX * Time.deltaTime);
+            if (newPosx < -40 || newPosx > 40) return true;
+        }
+
+        return false; 
     }
+
 }
+

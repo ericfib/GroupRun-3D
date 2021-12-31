@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1914998098913082455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6789747373564151138}
+  - component: {fileID: 4213219741759139732}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6789747373564151138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914998098913082455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4213219741759139732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914998098913082455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768f82aee71d91f4090949d397f6460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: playerMultiply
+    clip: {fileID: 8300000, guid: b4fe789dcd2daf94d808cd0a7968b39a, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: playerDeath
+    clip: {fileID: 8300000, guid: 1109dc7fe8a19c74ba0c0d33d5d5602f, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: hammerHit
+    clip: {fileID: 8300000, guid: 120b44480975c8a40be8f4decc750958, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: spikesActivate
+    clip: {fileID: 8300000, guid: 6b0524390bb96cf43a6fc3e4780a7500, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: bombExplosion
+    clip: {fileID: 8300000, guid: 5b7bf4c1650351243b84bc5e8bf4f614, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: playerGrow
+    clip: {fileID: 8300000, guid: 3c79211590a3f4f4d9279e406847454a, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: 1faseMusic
+    clip: {fileID: 8300000, guid: 0656164fe640ce34cb9c8ba64b5ca2b5, type: 3}
+    volume: 0.051
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: 2faseMusic
+    clip: {fileID: 8300000, guid: 74215132cc7c75b42afda0b2117057e9, type: 3}
+    volume: 0.059
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: fc0c6ef973775dd44b5118c514778707, type: 3}
+    volume: 1
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: ButtonPointer
+    clip: {fileID: 8300000, guid: 5b3c4c9cbabd2d041be231a1e491b752, type: 3}
+    volume: 0.577
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: activeGodMode
+    clip: {fileID: 8300000, guid: 33b296cb5d87f9a4587ebce9b5e9e1d0, type: 3}
+    volume: 0.577
+    pitch: 1
+    blend: 0
+    maxDistance: 100
+    source: {fileID: 0}
